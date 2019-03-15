@@ -32,6 +32,15 @@ function BasicLayout(props) {
           }
         </Menu>
       </Header>
+      <Content>
+        {props.children}
+      </Content>
+      {/* <Sider>
+        21314
+      </Sider> */}
+      <Footer>
+        31234
+      </Footer>
     </Layout>
   );
 }
