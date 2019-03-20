@@ -1,48 +1,88 @@
-import styles from './index.css';
+import React, { Children } from 'react';
+// import { Layout } from 'antd';
+// import { connect } from 'dva';
+// import Media from 'react-media';
+// import Header from './Header';
+// import logo from '../assets/yay.jpg';
 
-import { Layout, Menu } from 'antd';
-import Link from "umi/link";
+// const { Content } = Layout;
 
-const { Header, Content, Sider, Footer } = Layout;
+// class BasicLayout extends React.Component {
+//   componentDidMount() {
+//     const {
+//       dispatch,
+//       route: {
+//         routes
+//       }
+//     } = this.props;
+//     dispatch({
+//       type: 'menu/getMenuData',
+//       payload: { routes }
+//     })
+//   }
 
-const menuData = [
-  { route: 'home', name: '首页' },
-  { route: 'mainBusiness', name: '主营业务' },
-  { route: 'news', name: '新闻资讯' },
-  { route: 'successfulCases', name: '成功案例' },
-  { route: 'about', name: '关于翔鹏' },
-  { route: 'contact', name: '联系我们' },
-]
+//   getContext() {
+//     const { location, breadcrumbNameMap } = this.props;
+//     return {
+//       location,
+//       breadcrumbNameMap
+//     }
+//   }
 
-function BasicLayout(props) {
-  return (
-    <Layout>
-      <Header>
-        <Menu
-          theme='light'
-          mode='horizontal'
-          style={{ lineHeight: '64px' }}
-        >
-          {
-            menuData.map(menu => (
-              <Menu.Item key={`/${menu.name}`}>
-                <Link to={`${menu.route}`}>{menu.name}</Link>
-              </Menu.Item>
-            ))
-          }
-        </Menu>
-      </Header>
-      <Content>
-        {props.children}
-      </Content>
-      {/* <Sider>
-        21314
-      </Sider> */}
-      <Footer>
-        31234
-      </Footer>
-    </Layout>
-  );
+//   render() {
+//     const {
+//       menuData,
+//       breadcrumbNameMap,
+//       menu,
+//       location: { pathname },
+//       children
+//     } = this.props;
+
+//     const layout = (
+//       <Layout>
+//         <Layout>
+//           <Header
+//             menuData={menuData}
+//             logo={logo}
+//             {...this.props}
+//           />
+//           <Content>
+//             {children}
+//           </Content>
+//         </Layout>
+//       </Layout>
+//     )
+
+//     return (
+//       <React.Fragment>
+//         {console.log(breadcrumbNameMap)}
+//         {console.log('123')}
+//         {layout}
+//       </React.Fragment>
+//     )
+//   }
+// }
+
+
+// export default connect(({ menu: menuModel, menu }) => ({
+//   menuData: menuModel.menuData,
+//   breadcrumbNameMap: menuModel.breadcrumbNameMap,
+//   menu,
+// }))(props => (
+//   <Media query="(max-width: 599px)">
+//     {<BasicLayout {...props} />}
+//   </Media>
+// ));
+
+class BasicLayout extends React.Component{
+  render(){
+    return(
+      <div>
+        123
+        {this.props.children}
+      </div>
+    )
+  }
 }
 
-export default BasicLayout;
+export default BasicLayout
