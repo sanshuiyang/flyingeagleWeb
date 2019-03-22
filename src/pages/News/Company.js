@@ -1,13 +1,13 @@
 import React from 'react';
 
-class News extends React.Component{
+class Company extends React.Component{
     render(){
         return(
             <div>
-                新闻    
+                公司新闻    
             </div>
         )
     }
 }
 
-export default News
+export default Company;

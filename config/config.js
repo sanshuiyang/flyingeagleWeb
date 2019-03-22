@@ -1,7 +1,7 @@
 // ref: https://umijs.org/config/
 //copy from https://github.com/ant-design/ant-design-pro/blob/master/config/config.js
 import os from 'os';
-// import pageRoutes from './router.config';
+import pageRoutes from './router.config';
 import webpackPlugin from './plugin.config.js';
 import defaultSettings from '../src/defaultSettings';
 import slash from 'slash2';  //将window下的'//' 变为 '\'
@@ -24,9 +24,12 @@ export default {
     plugins,
     treeShaking: true,
     //路由配置
-    // routes: pageRoutes,
+    routes: pageRoutes,
     theme: {
         'primary-color': primaryColor
+    },
+    alias: {
+        '@': require('path').resolve(__dirname, 'src'),
     },
     ignoreMomentLocale: true,
     lessLoaderOptions: {

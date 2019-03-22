@@ -5,13 +5,13 @@ function formatter(data, parentName) {
     if (!data) {
         return undefined;
     }
-
+    
     return data
         .map(item => {
             if (!item.name || !item.path) {
                 return null;
             }
-
+            
             let locale = 'menu';
             if (parentName) {
                 locale = `${parentName}.${item.name}`;
@@ -79,10 +79,10 @@ export default {
     effects: {
         *getMenuData({ payload }, { put }) {
             const { routes } = payload;
+            
             const orignalMenuData = memoizeOneFormatter(routes);
             const menuData = filterMenuData(orignalMenuData);
             const breadcrumbNameMap = memoizeOneGetBreadcrumbNameMap(orignalMenuData);
-            console.log("123");
             yield put({
                 type: 'save',
                 payload: { menuData, breadcrumbNameMap, routerData: routes },

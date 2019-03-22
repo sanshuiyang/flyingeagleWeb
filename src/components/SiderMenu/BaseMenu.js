@@ -1,29 +1,11 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import { Menu, Icon } from 'antd';
+import { Menu } from 'antd';
 import Link from 'umi/link';
 import { urlToList } from '../../utils/utils';
 import { getMenuMatches } from './SiderMenuUtils';
-import { isUrl } from '@/utils/utils';
-import styles from './index.less';
 
 const { SubMenu } = Menu;
-
-// Allow menu.js config icon as string or ReactNode
-//   icon: 'setting',
-//   icon: 'icon-geren' #For Iconfont ,
-//   icon: 'http://demo.com/icon.png',
-//   icon: <Icon type="setting" />,
-const getIcon = icon => {
-  if (typeof icon === 'string') {
-    if (isUrl(icon)) {
-      return <Icon component={() => <img src={icon} alt="icon" className={styles.icon} />} />;
-    }
-
-    return <Icon type={icon} />;
-  }
-  return icon;
-};
 
 export default class BaseMenu extends PureComponent {
   /**
@@ -58,7 +40,6 @@ export default class BaseMenu extends PureComponent {
           title={
             item.icon ? (
               <span>
-                {getIcon(item.icon)}
                 <span>{name}</span>
               </span>
             ) : (
@@ -82,13 +63,11 @@ export default class BaseMenu extends PureComponent {
   getMenuItemPath = item => {
     const { name } = item;
     const itemPath = this.conversionPath(item.path);
-    const icon = getIcon(item.icon);
     const { target } = item;
     // Is it a http link
     if (/^https?:\/\//.test(itemPath)) {
       return (
         <a href={itemPath} target={target}>
-          {icon}
           <span>{name}</span>
         </a>
       );
@@ -107,7 +86,6 @@ export default class BaseMenu extends PureComponent {
             : undefined
         }
       >
-        {icon}
         <span>{name}</span>
       </Link>
     );
@@ -123,7 +101,6 @@ export default class BaseMenu extends PureComponent {
   render() {
     const {
       openKeys,
-      theme,
       mode,
       location: { pathname },
       className,
@@ -140,20 +117,14 @@ export default class BaseMenu extends PureComponent {
         openKeys: openKeys.length === 0 ? [...selectedKeys] : openKeys,
       };
     }
-    const { handleOpenChange, style, menuData } = this.props;
-    const cls = classNames(className, {
-      'top-nav-menu': mode === 'horizontal',
-    });
+    const {  style, menuData } = this.props;
 
     return (
       <Menu
         key="Menu"
         mode={mode}
-        theme={theme}
-        onOpenChange={handleOpenChange}
         selectedKeys={selectedKeys}
         style={style}
-        className={cls}
         {...props}
       >
         {this.getNavMenuItems(menuData)}

@@ -54,14 +54,14 @@ export default class SiderMenu extends PureComponent {
   };
 
   render() {
-    const { logo, collapsed, onCollapse, fixSiderbar, theme, isMobile } = this.props;
+    const { logo, collapsed, onCollapse, fixSiderbar, isMobile } = this.props;
     const { openKeys } = this.state;
     const defaultProps = collapsed ? {} : { openKeys };
 
     const siderClassName = classNames(styles.sider, {
       [styles.fixSiderBar]: fixSiderbar,
-      [styles.light]: theme === 'light',
     });
+    console.log(siderClassName)
     return (
       <Sider
         trigger={null}
@@ -74,7 +74,6 @@ export default class SiderMenu extends PureComponent {
           }
         }}
         width={256}
-        theme={theme}
         className={siderClassName}
       >
         <div className={styles.logo} id="logo">

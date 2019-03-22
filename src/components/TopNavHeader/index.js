@@ -26,7 +26,7 @@ export default class TopNavHeader extends PureComponent {
         return (
             <div className={`${styles.head} ${styles.light}`}>
                 <div className={styles.left}>
-                    <div className={styles.logo} key="logo" id="logo">
+                    <div className={styles.logo} key="logo" id="logo" style={{float:'left'}}>
                         <Link to="/">
                             <img src={logo} alt="logo" />
                             <h1>官网</h1>
