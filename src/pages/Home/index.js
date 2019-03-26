@@ -1,18 +1,11 @@
 
 import './home.less';
-import { Carousel, Card, Row, Col } from 'antd';
+import { Carousel, Card, Row, Col, Layout } from 'antd';
 import CarouselImg from './CarouselImg';
 import IntroduceRow from './IntroduceRow';
+import Section_01 from './section_01';
 
-
-const topColResponsiveProps = {
-  xs: 24,
-  sm: 12,
-  md: 12,
-  lg: 12,
-  xl: 6,
-  style: { marginBottom: 24 },
-};
+const { Sider, Content } = Layout;
 
 export default function () {
   const imgData = [
@@ -51,9 +44,18 @@ export default function () {
     },
   ]
 
+  const topColResponsiveProps = {
+    xs: 48,
+    sm: 24,
+    md: 24,
+    lg: 24,
+    xl: 12,
+    style: { marginBottom: 24 },
+  }
+
   const cardTitle = ({ textAlign, content }) => (
     <h3 style={{ textAlign: `${textAlign}` }}>{content}</h3>
-  )
+  );
 
   return (
     <div style={{ margin: '0 15%' }}>
@@ -61,64 +63,53 @@ export default function () {
         {imgData.map(item => (<CarouselImg src={item.src} key={item.key} title={item.title} />))}
       </Carousel>
       <IntroduceRow loading={false} visiData={cardData} />
-      <hr />
-      <Card
-        title={cardTitle({
-          textAlign: 'center',
-          content: '主要的业务范围'
-        })}
-      >
-        <Row gutter='24'>
-          <Col {...topColResponsiveProps}>
-            <Card
-              title={
-                cardTitle({
-                  textAlign: 'left',
-                  content: '虚拟漫游'
-                })
-              }
-              bordered={false}
-            >
-              虚拟漫游，是虚拟现实(VR)技术的重要分支，在建筑、旅游、游戏、航空航天、医学等多种行业发展很快。由于有可贵的3I特性–沉浸感、交互性和构想性，使得沿用固定漫游路径等手段的其他漫游技术和系统无法与之相比。
-            </Card>
-            <Card
-              title={
-                cardTitle({
-                  textAlign: 'left',
-                  content: '虚拟装配'
-                })
-              }
-              bordered={false}
-            >
-              基于虚拟现实的产品虚拟拆装技术在新产品开发、产品的维护以及操作培训方面具有独特的作用。在交互式虚拟装配环境中，用户使用各类交互设备，像在真实环境中一样对产品的零部件进行各类装配操作，从而使得用户能够对产品的可装配性进行分析、对产品零部件装配序列进行验证和规划、对装配操作人员进行培训等。
-            </Card>
-          </Col>
-          <Col {...topColResponsiveProps}>
-            <Card
-              title={
-                cardTitle({
-                  textAlign: 'left',
-                  content: '虚拟演练'
-                })
-              }
-              bordered={false}
-            >
-              演练系统提供针对不同角色进行训练的功能。根据登陆的不同角色，系统提供不同的能力和权限。 根据在应对灾害时职责和所需能力的不同，角色主要包括以下几类：群众、社会救援力量、现场专业救援力量，指挥中心等。
-            </Card>
-            <Card
-              title={
-                cardTitle({
-                  textAlign: 'left',
-                  content: '虚拟全景展示'
-                })
-              }
-              bordered={false}
-            >
-              全方位，全面的展示了双360度球型范围内的所有景致；可在例子中用鼠标左键按住拖动，观看场景的各个方向；实景，真实的场景，三维全景大多是在照片基础之上拼合得到的图像，最大限度的保留了场景的真实性。
-            </Card>
-          </Col>
-        </Row>
-      </Card>
+      <Section_01 />
+      <hr /> {/**选择我们的理由 */}
+      <Row gutter="24">
+        <Col {...topColResponsiveProps}>
+          <Card
+            title={
+              cardTitle({
+                textAlign: 'center',
+                content: '全程跟踪/Always Tracking',
+              })
+            }
+            bordered={false}
+            style={{marginTop:'5px'}}
+          >
+            {'科技虚拟现实与互联网应用相结合，将领先业界的产品理念和丰富的产品开发经验相结合，为用户提供简单、方便、安全、实用的虚拟现实系统产品和解决方案，帮助客户实现低成本、低风险、快起步、高效率的目标。'}
+          </Card>
+          <Card
+            title={
+              cardTitle({
+                textAlign: 'center',
+                content: '深入项目/Depth Project',
+              })
+            }
+            bordered={false}
+            style={{marginTop:'5px'}}
+          >
+            {'每一个项目的启动都会在团队内部做好每个人的分工，让项目在持续的过程中有理有据、循序渐进，从前期开始就把每个环节做到最优，避免在后期整合时出现问题而拉慢整体进度，每一个环节都会在总监的肯定后再做下一步的工作，很好的在规定时间内满足客户要求，在质量上也是精益求精。'}
+          </Card>
+          <Card
+            title={
+              cardTitle({
+                textAlign: 'center',
+                content: '客户为本/Customer Service',
+              })
+            }
+            bordered={false}
+            style={{marginTop:'5px'}}
+          >
+            {'客户为本一直是公司的首要任务，在项目进行中我们会最大程度、最高质量的完成客户的要求，在期间也会仔细的跟客户交流，对于已经做出来的产品也会让客户完全满意后才会对项目结题。'}
+          </Card>
+        </Col>
+        <Col {...topColResponsiveProps}>
+          <h1>选择我们的理由<br />
+            Reasons to choose us
+          </h1>
+        </Col>
+      </Row>
     </div>
   );
 }
